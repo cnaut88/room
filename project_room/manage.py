@@ -20,3 +20,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+#cd C:\Users\Stas\Desktop\DJANGO_ROOM\project_room
+#python manage.py runserver
+#python manage.py makemigrations booking
+#python manage.py migrate
+#python manage.py createsuperuser

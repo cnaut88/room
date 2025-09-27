@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Кімнати</title>
+</head>
+<body>
+    <h1>Кімнати</h1>
+    <ul>
+        {% for r in rooms %}
+            <li>{{ r.name }} ({{ r.capacity }} місць) – {{ r.price }} грн</li>
+        {% empty %}
+            <li>Поки немає кімнат</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'book_room' %}">Забронювати кімнату</a>
+</body>
+</html>
