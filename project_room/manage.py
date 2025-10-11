@@ -25,3 +25,6 @@ if __name__ == '__main__':
 #python manage.py makemigrations booking
 #python manage.py migrate
 #python manage.py createsuperuser
+#git add .
+#git commit -m ""
+#git push -u origin main

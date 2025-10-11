@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="{% static 'style1.css' %}">
 </head>
 <body>
+    <div class = "container">
     <h1>Бронювання</h1>
-    <form method="post">
+    <form method="post" class="booking-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Забронювати</button>
+        <button type="submit"class="btn">Забронювати</button>
+        
     </form>
-    <a href="{% url 'home' %}">Назад</a>
+    <a href="{% url 'home' %}"class="back-btn">Назад</a>
+    </div>
 </body>
 </html>
 

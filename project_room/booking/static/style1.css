@@ -1,87 +1,157 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f6f9;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
 
-
-h1 {
-    text-align: center;
-    color: #222;
-    margin: 40px 0 20px 0;
-}
-
-
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-}
-
-
-form p {
-    margin: 18px 0;
-}
-
-
-label {
-    font-weight: bold;
-    font-size: 14px;
-    display: block;
-    margin-bottom: 6px;
-}
-
-
-form input,
-form select,
-form textarea {
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
     width: 100%;
-    border: none;
-    border-bottom: 1px solid #aaa;
-    padding: 8px 4px;
-    font-size: 14px;
-    background: transparent;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-
-form input:focus,
-form select:focus,
-form textarea:focus {
-    border-bottom: 1px solid #4a90e2;
-}
-
-
-button[type="submit"] {
-    background: #4a90e2;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    background: #000;
     color: #fff;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 4px;
-    cursor: pointer;
     font-size: 14px;
+    outline: none;
+    transition: 0.3s ease;
+    appearance: none;       
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-sizing: border-box; 
 }
 
-button[type="submit"]:hover {
-    background: #357ab8;
+.booking-form input:hover,
+.booking-form select:hover,
+.booking-form textarea:hover {
+    border-color: #888;
 }
 
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: #00f0ff;
+    box-shadow: 0 0 10px #00f0ff;
+}
 
-a {
+.booking-form select {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+    padding-right: 35px; 
+    cursor: pointer;
+}
+
+.container h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    background: linear-gradient(90deg, #ff00cc, #00f0ff, #ffcc00);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 4s infinite alternate;
+}
+
+.booking-form{
+    text-align: left;
+    margin-bottom: 15px;
+    color:white;
+}
+.btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #00f0ff, #45f3ff, #00f0ff);
+    background-size: 300% 300%;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    animation: buttonGlow 5s ease infinite;
+    transition: transform 0.3s ease;
+}
+
+.btn:hover{
+    transform: scale(1.05);
+    background: linear-gradient(90deg,#6dd5ed,#2193b0);
+}
+.back-btn{
     display: inline-block;
     margin-top: 15px;
-    color: #4a90e2;
+    color: #2193b0;
     text-decoration: none;
-    font-size: 14px;
+    font-weight: bold;
+    transition: color 0.3s;
+
+}
+.back-btn:hover{
+    color: #6dd5ed;
 }
 
-a:hover {
-    text-decoration: underline;
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
 }
 
+.container {
+    position: relative;
+    background: black; 
+    padding: 30px 40px;
+    border-radius: 15px;
+    width: 400px;
+    text-align: center;
+    z-index: 1;
+}
+
+.container::before {
+    content: "";
+    position: absolute;
+    inset: 0; 
+    padding: 3px; 
+    border-radius: 15px;
+    background: linear-gradient(
+        270deg,
+        #ff00cc,
+        #3333ff,
+        #ffcc00,
+        #ff0099,
+        #00f0ff,
+        #ff00cc
+    );
+    background-size: 400% 400%;
+    animation: borderFlow 8s linear infinite;
+
+    
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+
+    
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+
+    z-index: -1;
+}
+
+
+
+@keyframes borderFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
