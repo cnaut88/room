@@ -6,6 +6,34 @@
     <title>Кімнати</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+
+<header class="header">
+    <div class="header-container">
+        <div class="burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="side-menu" id="sideMenu">
+    <div class="side-content">
+        {% if user.is_authenticated %}
+            <p class="side-welcome">Привіт, {{ user.username }}</p>
+            <form method="post" action="{% url 'logout' %}">
+                {%csrf_token%}
+                <button type="submit"class="buttot-1">вийти</button>
+            </form>
+            
+        {% else %}
+            <a href="{% url 'login_register' %}" class="side-link">Увійти / Реєстрація</a>
+        {% endif %}
+    </div>
+</div>
+
 <body>
     <div class="container">
         <h1>Кімнати</h1>
@@ -21,5 +49,15 @@
         </ul>
         <a href="{% url 'book_room' %}" class="btn">Забронювати кімнату</a>
     </div>
+<script>
+    
+    const burger = document.getElementById('burger');
+    const sideMenu = document.getElementById('sideMenu');
+
+    burger.addEventListener('click', () => {
+        sideMenu.classList.toggle('active');
+        burger.classList.toggle('active');
+    });
+</script>
 </body>
 </html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Вхід / Реєстрація</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            background: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            border-radius: 15px;
+            width: 340px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #00f0ff;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        label {
+            align-self: flex-start;
+            margin-left: 5%;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            border-radius: 6px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        input:focus {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        button {
+            width: 95%;
+            padding: 10px;
+            background: linear-gradient(90deg, #ff00cc, #00f0ff);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 10px #00f0ff;
+        }
+
+        .toggle {
+            margin-top: 15px;
+            color: #00f0ff;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+            transition: 0.3s;
+        }
+
+        .toggle:hover {
+            color: #ff00cc;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        
+        .messages {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #ff8080;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        {% if messages %}
+            <div class="messages">
+                {% for msg in messages %}
+                    <p>{{ msg }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div id="loginForm">
+            <h2>Увійти</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="login">
+
+                <label for="id_username">Логін або ім’я користувача</label>
+                {{ login_form.username }}
+
+                <label for="id_password">Пароль</label>
+                {{ login_form.password }}
+
+                <button type="submit">Увійти</button>
+            </form>
+            <p class="toggle" onclick="toggleForms()">Немає акаунта? Зареєструватися</p>
+        </div>
+
+        <div id="registerForm" class="hidden">
+            <h2>Реєстрація</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="register">
+
+                <label for="id_username">Ім’я користувача</label>
+                {{ register_form.username }}
+
+                <label for="id_password1">Пароль</label>
+                {{ register_form.password1 }}
+
+                <label for="id_password2">Підтвердження паролю</label>
+                {{ register_form.password2 }}
+
+                <button type="submit">Створити акаунт</button>
+            </form>
+            <p class="toggle" onclick="toggleForms()">Вже маєш акаунт? Увійти</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            document.getElementById('loginForm').classList.toggle('hidden');
+            document.getElementById('registerForm').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
+
+
